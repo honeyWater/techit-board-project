@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Board Update Form</title>
+  <link rel="stylesheet" th:href="@{/board-form.css}"/>
+</head>
+<body>
+
+<div class="board-form">
+  <h2>Create a New Board</h2>
+  <form th:action="@{/update}" method="post" th:object="${board}">
+    <input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{created_at}"/>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" th:text="${board.name}" th:field="*{name}" required/>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" th:text="${board.title}" th:field="*{title}" required/>
+    </div>
+
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea id="content" th:text="${board.content}" th:field="*{content}" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password (for verification)</label>
+      <input type="password" id="password" th:field="*{password}" required/>
+      <!-- 비밀번호가 일치하지 않으면 메시지를 띄우며 다시 입력하도록 합니다 -->
+      <span th:if="${error}" th:text="${error}"></span>
+    </div>
+
+    <div class="btn-container">
+      <button type="submit" class="btn">Update</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
