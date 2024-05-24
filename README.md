@@ -1,5 +1,4 @@
 # techit-chatting-project
----
 Java 기반의 텍스트 게시판 어플리케이션 구현 프로젝트
 
 <br>
