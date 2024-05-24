@@ -5,7 +5,6 @@ Java 기반의 텍스트 게시판 어플리케이션 구현 프로젝트
 <br>
 
 ## ➡️ 프로젝트 요구 사항
----
 - 글 등록
   - 이름, 제목, 암호, 본문을 입력
   - 등록일, ID는 자동으로 저장
@@ -26,7 +25,6 @@ Java 기반의 텍스트 게시판 어플리케이션 구현 프로젝트
 <br>
 
 ## ➡️ DB 테이블 설계 및 Sample Data
----
 
 ### 0. 테이블 삭제
 
@@ -52,7 +50,6 @@ updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- 수
 <br>
 
 # ➡️ 예제 데이터 삽입
----
 ```sql
 INSERT INTO board (name, title, password, content) VALUES
 ('김민수', '첫 번째 글입니다!', 'password123', '이것은 첫 번째 게시글의 내용입니다.'),
@@ -71,7 +68,6 @@ INSERT INTO board (name, title, password, content) VALUES
 <br>
 
 # ➡️ URL 구조
----
 ### 1. 게시글 목록 보기 (`/list`)
 - **URL:** `/list`, `/list?page=2`
 - **기능:**
@@ -81,8 +77,6 @@ INSERT INTO board (name, title, password, content) VALUES
   - 하단에는 페이지 네비게이터가 있어 다른 페이지로 쉽게 이동할 수 있습니다.
   - 각 게시글은 ID, 제목, 이름, 등록일(YYYY/MM/DD 형식)로 목록이 구성됩니다.
 
----
-
 ### 2. 게시글 상세 조회 (`/view?id=아이디`)
 - **URL:** `/view?id=아이디`
 - **기능:**
@@ -91,16 +85,12 @@ INSERT INTO board (name, title, password, content) VALUES
   - 게시글의 등록일은 YYYY/MM/DD hh24:mi 형식으로 표시됩니다.
   - 게시글의 암호는 보여지지 않습니다.
 
----
-
 ### 3. 게시글 등록 폼 (`/writeform`)
 - **URL:** `/writeform`
 - **기능:**
   - 특정 게시글을 쓰기위한 폼을 제공합니다.
   - 사용자는 이름, 제목, 내용, 암호를 입력하고, 확인 버튼을 클릭하여 등록을 요청합니다.
   - 모든 내용이 잘 입력되어 있을 경우 `/write`로 요청을 보내 등록 처리 후 `/list`로 리다이렉트됩니다.
-
----
 
 ### 4. 게시글 삭제 폼 (`/deleteform?id=아이디`)
 - **URL:** `/deleteform?id=아이디`
@@ -109,16 +99,12 @@ INSERT INTO board (name, title, password, content) VALUES
   - 사용자는 암호를 입력하고, 확인 버튼을 클릭하여 삭제를 요청합니다.
   - 올바른 암호 입력 시, `/delete`로 요청을 보내 삭제 처리 후 `/list`로 리다이렉트됩니다.
 
----
-
 ### 5. 게시글 수정 폼 (`/updateform?id=아이디`)
 - **URL:** `/updateform?id=아이디`
 - **기능:**
   - 특정 게시글을 수정하기 위한 폼을 제공합니다.
   - 이름, 제목, 본문, 암호 필드를 포함하며, 사용자는 이를 수정할 수 있습니다.
   - 확인 버튼을 클릭하면 `/update`로 수정 요청을 보내고, 수정이 완료되면 해당 게시글의 상세 페이지(`/view?id=아이디`)로 리다이렉트됩니다.
-
----
 
 # 추가 기능(?)
 
